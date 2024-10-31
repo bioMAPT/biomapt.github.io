@@ -36,7 +36,7 @@ install_klipper(){
 
 install_mapt(){
 	# clone the project repo
-	git clone https://github.com/bioMAPT/MAPT.git
+	git clone --filter=tree:0 https://github.com/bioMAPT/MAPT.git
 
 	cd MAPT
 
