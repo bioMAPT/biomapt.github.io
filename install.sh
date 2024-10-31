@@ -45,7 +45,7 @@ install_mapt(){
 	ln -s ${PWD}/klipper.cfg ${HOME}/printer.cfg
 
 	# install the systemd service
-	sed -r 's/ mapt.service /etc/systemd/system/mapt.service
+	#sed -r 's/ mapt.service /etc/systemd/system/mapt.service
 	sudo systemctl daemon-reload 
 	sudo systemctl enable --now mapt
 }
