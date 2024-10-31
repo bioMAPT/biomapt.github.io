@@ -50,5 +50,7 @@ install_mapt(){
 	sudo systemctl enable --now mapt
 }
 
+sudo apt update
+sudo apt install -y git
 install_klipper
 install_mapt
