@@ -5,7 +5,7 @@
 # exit script on first error
 set -e
 
-install_klipper(){
+install_klipper(){(
 	# clone the klipper repo
 	git clone --filter=tree:0 --branch=v0.12.0 https://github.com/Klipper3d/klipper.git 
 
@@ -32,9 +32,9 @@ install_klipper(){
 	sed -r 's/^ExecStart=.*$/\0\nExecStartPost=chown '"${USER}"' \/tmp\/klipper_host_mcu/' scripts/klipper-mcu.service | sudo tee /etc/systemd/system/klipper-mcu.service > /dev/null
 	sudo systemctl daemon-reload
  	sudo systemctl enable --now klipper-mcu
-}
+)}
 
-install_mapt(){
+install_mapt(){(
 	# clone the project repo
 	git clone --filter=tree:0 https://github.com/bioMAPT/MAPT.git
 
@@ -47,7 +47,7 @@ install_mapt(){
 	#sed -r 's/ mapt.service /etc/systemd/system/mapt.service
 	sudo systemctl daemon-reload 
 	sudo systemctl enable --now mapt
-}
+)}
 
 sudo apt update
 sudo apt install -y git
