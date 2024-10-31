@@ -29,7 +29,7 @@ install_klipper(){
 
 	# install klipper-mcu
 	sudo make flash
-	sed -r 's/^ExecStart=.*$/\0\nExecStartPost=chown '"${USER} /tmp/klipper_host_mcu/" scripts/klipper-mcu.service | sudo tee /etc/systemd/system/klipper-mcu.service > /dev/null
+	sed -r 's/^ExecStart=.*$/\0\nExecStartPost=chown '"${USER}"' \/tmp\/klipper_host_mcu\//' scripts/klipper-mcu.service | sudo tee /etc/systemd/system/klipper-mcu.service > /dev/null
 	sudo systemctl daemon-reload
 	sudo systemctl enable --now klipper-mcu
 }
@@ -45,7 +45,7 @@ install_mapt(){
 	ln -s ${PWD}/klipper.cfg ${HOME}/printer.cfg
 
 	# install the systemd service
-	sudo install -m 644 mapt.service /etc/systemd/system/mapt.service
+	sed -r 's/ mapt.service /etc/systemd/system/mapt.service
 	sudo systemctl daemon-reload 
 	sudo systemctl enable --now mapt
 }
