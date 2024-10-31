@@ -28,10 +28,9 @@ install_klipper(){
 	make -j$(nproc)
 
 	# install klipper-mcu
+	sed -r -i 's/^ExecStart=.*$/\0\nExecStartPost=chown '"${USER}"' \/tmp\/klipper_host_mcu\//' scripts/klipper-mcu.service
 	sudo make flash
-	sed -r 's/^ExecStart=.*$/\0\nExecStartPost=chown '"${USER}"' \/tmp\/klipper_host_mcu\//' scripts/klipper-mcu.service | sudo tee /etc/systemd/system/klipper-mcu.service > /dev/null
 	sudo systemctl daemon-reload
-	sudo systemctl enable --now klipper-mcu
 }
 
 install_mapt(){
