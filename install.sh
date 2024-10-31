@@ -38,10 +38,9 @@ install_mapt(){
 	# clone the project repo
 	git clone https://github.com/bioMAPT/MAPT.git
 
-	cd mapt
+	cd MAPT
 
 	# install the klipper config
-	rm ${HOME}/printer.cfg
 	ln -s ${PWD}/klipper.cfg ${HOME}/printer.cfg
 
 	# install the systemd service
