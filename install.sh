@@ -1,3 +1,54 @@
-#!/bin/sh
+#!/bin/bash
+#
+# Install Microbio Automatic Photography Tool firmware
 
-echo test
+# exit script on first error
+set -e
+
+install_klipper(){
+	# clone the klipper repo
+	git clone --filter=tree:0 --branch=v0.12.0 https://github.com/Klipper3d/klipper.git 
+
+	cd klipper
+
+	# increase the timeouts to something more suitable for this application
+	sed -r -i 's/TRSYNC_TIMEOUT = 0.025/TRSYNC_TIMEOUT = 0.25/' klippy/mcu.py
+	sed -r -i 's/TRSYNC_SINGLE_MCU_TIMEOUT = 0.250/TRSYNC_SINGLE_MCU_TIMEOUT = 2.50/' klippy/mcu.py
+
+	# update debian install script for bookworm
+	sed -r -i 's/python-dev /python-dev-is-python3 /' scripts/install-debian.sh
+	sed -r -i 's/python2/python3/' scripts/install-debian.sh
+
+	# install klipper
+	./scripts/install-debian.sh
+
+	# build klipper-mcu
+	echo "CONFIG_MACH_LINUX=y" > .config
+	make olddefconfig
+	make -j$(nproc)
+
+	# install klipper-mcu
+	sudo make flash
+	sudo cp scripts/klipper-mcu.service /etc/systemd/system/
+	sudo systemctl daemon-reload
+	sudo systemctl enable --now klipper-mcu
+}
+
+install_mapt(){
+	# clone the project repo
+	git clone https://github.com/bioMAPT/mapt
+
+	cd mapt
+
+	# install the klipper config
+	rm ${HOME}/printer.cfg
+	ln -s ${PWD}/klipper.cfg ${HOME}/printer.cfg
+
+	# install the systemd service
+	sudo install -m 644 mapt.service /etc/systemd/system/mapt.service
+	sudo systemctl daemon-reload 
+	sudo systemctl enable --now mapt
+}
+
+install_klipper
+install_mapt
