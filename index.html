@@ -12,8 +12,11 @@ cd MAPT
 
 
 -->
-<script type="text/javascript">document.children[0].remove();</script>
 <html>
+	<script type="text/javascript">
+		// clear the old body (contains the first '#' from the bash comment)
+		document.getElementsByTagName("body")[0].innerHTML="";
+	</script>
 	<body>
 		<h1>Microbio Automatic Photography Tool</h1>
 	</body>
