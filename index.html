@@ -6,11 +6,11 @@ install_mapt(){
 		sudo apt install -y git
 	fi
 
-	echo git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
-	echo cd MAPT
-	echo ./install.sh
+	git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
+	cd MAPT
+	./install.sh
 }
-install_mapt()
+install_mapt
 
 
 cat > /dev/null <<EOF
@@ -24,4 +24,6 @@ cat > /dev/null <<EOF
 		<h1>Microbio Automatic Photography Tool</h1>
 	</body>
 </html>
-
+<!--
+EOF
+#-->
