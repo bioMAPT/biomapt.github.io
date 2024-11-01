@@ -1,22 +1,22 @@
 #!/bin/bash
-# hybrid install script and home page for MAPT
 #
+# MAPT hybrid install script and home page
+#
+# some inline js to hide these comments and the rest of the script:
 # <script type="text/javascript"> document.getElementsByTagName("body")[0].innerHTML=""; </script><!--
 
-install_mapt(){
-	if ! git --version | grep "git version" &> /dev/null; then
-		sudo apt update
-		sudo apt install -y git
-	fi
+if ! git --version | grep "git version" &> /dev/null; then
+	sudo apt update
+	sudo apt install -y git
+fi
 
-	git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
-	cd MAPT
-	./install.sh
-}
-install_mapt
+git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
+cd MAPT
+./install.sh
 
 
-cat > /dev/null <<EOF
+# HTML for home page begins here:
+:<<EOF
 -->
 <html>
 	<body>
