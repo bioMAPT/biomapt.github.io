@@ -1,4 +1,7 @@
-#<!--
+#!/bin/bash
+# hybrid install script and home page for MAPT
+#
+# <script type="text/javascript"> document.getElementsByTagName("body")[0].innerHTML=""; </script><!--
 
 install_mapt(){
 	if ! git --version | grep "git version" &> /dev/null; then
@@ -16,10 +19,6 @@ install_mapt
 cat > /dev/null <<EOF
 -->
 <html>
-	<script type="text/javascript">
-		// clear the old body (contains the first '#' from the bash comment)
-		document.getElementsByTagName("body")[0].innerHTML="";
-	</script>
 	<body>
 		<h1>Microbio Automatic Photography Tool</h1>
 	</body>
