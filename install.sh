@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if ! git --version | grep "git version" > /dev/null; then
+if ! git --version | grep "git version" &> /dev/null; then
 	sudo apt update
 	sudo apt install -y git
 fi
