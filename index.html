@@ -1,12 +1,20 @@
-< /dev/null hidden=true>
 #<!--
-echo script test
 
-exit
+if ! git --version | grep "git version" &> /dev/null; then
+	sudo apt update
+	sudo apt install -y git
+fi
+
+git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
+cd MAPT
+./install.sh
+
+
+
 -->
+<script type="text/javascript">document.children[0].remove();</script>
 <html>
 	<body>
-		test
-		<h1 <!-- test --> > HEADER</h1>
+		<h1>Microbio Automatic Photography Tool</h1>
 	</body>
 </html>
