@@ -1,13 +1,16 @@
 #<!--
 
-if ! git --version | grep "git version" &> /dev/null; then
-	sudo apt update
-	sudo apt install -y git
-fi
+install_mapt(){
+	if ! git --version | grep "git version" &> /dev/null; then
+		sudo apt update
+		sudo apt install -y git
+	fi
 
-git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
-cd MAPT
-./install.sh
+	git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
+	cd MAPT
+	./install.sh
+}
+install_mapt()
 
 
 
