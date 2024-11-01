@@ -7,4 +7,4 @@ fi
 
 git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
 cd MAPT
-exec ./install.sh
+./install.sh
