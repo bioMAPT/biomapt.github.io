@@ -6,15 +6,15 @@ install_mapt(){
 		sudo apt install -y git
 	fi
 
-	git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
-	cd MAPT
-	./install.sh
+	echo git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
+	echo cd MAPT
+	echo ./install.sh
 }
 install_mapt()
 
+0<&-
 
 
-<&-
 -->
 <html>
 	<script type="text/javascript">
