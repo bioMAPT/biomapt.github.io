@@ -1,9 +1,10 @@
 #!/bin/bash
 #
 # MAPT hybrid install script and home page
+# https://bioMAPT.github.io/
 #
-# some inline js to hide these comments and the rest of the script:
-# <script type="text/javascript"> document.getElementsByTagName("body")[0].innerHTML=""; </script><!--
+# inline js and html comment to hide the bash script:
+# <script type="text/javascript">document.body.innerHTML=""</script><!--
 
 if ! ( [[ "$(uname -v)" =~ .*Raspbian.* ]] && [[ "$(uname -m)" == "armv7l" ]] ); then
 	echo "Error: this script should be run on a Raspberry Pi running 32-bit Debian Bookworm"
