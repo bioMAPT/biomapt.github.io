@@ -3,6 +3,8 @@ layout: page
 title: Microbio Automatic Photography Tool
 ---
 
+![MAPT](assets/MAPT_Illustration.png)
+
 A tool to automatically take photographs of petri dishes.
 
 * Holds up to 10 petri dishes
