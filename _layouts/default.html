@@ -6,12 +6,14 @@
 # inline js and html comment to hide the bash script:
 # <script type="text/javascript">document.body.innerHTML=""</script><!--
 
-if ! ( [[ "$(uname -v)" =~ .*Raspbian.* ]] && [[ "$(uname -m)" == "armv7l" ]] ); then
+clear
+
+if ! ( [[ "$(uname -v)" =~ .*Raspbian.* ]] && [[ "$(uname -m)" =~ armv.* ]] ); then
 	echo "Error: this script should be run on a Raspberry Pi running 32-bit Debian Bookworm"
 	exit 1
 fi
 
-if ! git --version | grep "git version" &> /dev/null; then
+if ! (git --version | grep "git version") &> /dev/null; then
 	sudo apt update
 	sudo apt install -y git
 fi
