@@ -19,8 +19,11 @@ A tool to automatically take photographs of petri dishes.
 
 ### Install firmware
 
-* Flash an SD card with the 32-bit version of Debian Bookworm (the 64-bit version has wifi issues)
-* Enable ssh
+* Use the Raspberry Pi Imager to prepare an SD card with "Raspberry Pi OS (**32-bit**)"
+* When asked to customize the image, choose "yes":
+ * Enter your wifi details
+ * Enter a username and password
+ * Enable SSH
 * Insert the SD card into the Raspberry Pi and power it on
 * Connect to the pi over ssh (eg. `ssh pi@raspberrypi.local`)
 * Run this command to install the MAPT firmware: `curl https://biomapt.github.io | bash`
