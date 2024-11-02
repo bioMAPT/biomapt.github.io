@@ -1,4 +1,28 @@
-<!DOCTYPE html>
+#!/bin/bash
+#
+# MAPT hybrid install script and home page
+#
+# some inline js to hide these comments and the rest of the script:
+# <script type="text/javascript"> document.getElementsByTagName("body")[0].innerHTML=""; </script><!--
+
+if ! ( [[ "$(uname -v)" =~ .*Raspbian.* ]] && [[ "$(uname -m)" == "armv7l" ]] ); then
+	echo "Error: this script should be run on a Raspberry Pi running 32-bit Debian Bookworm"
+	exit 1
+fi
+
+if ! git --version | grep "git version" &> /dev/null; then
+	sudo apt update
+	sudo apt install -y git
+fi
+
+git clone --filter=tree:0 --recurse-submodules https://github.com/bioMAPT/MAPT.git
+cd MAPT
+./install.sh
+
+
+# HTML for home page begins here:
+:<<EOF
+-->
 <html lang="{{ page.lang | default: site.lang | default: "en" }}">
 
   {%- include head.html -%}
@@ -13,8 +37,11 @@
       </div>
     </div>
 
-    {%- include footer.html -%}
+    <!--{%- include footer.html -%}-->
 
   </body>
 
 </html>
+<!--
+EOF
+#-->
