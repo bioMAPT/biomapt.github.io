@@ -8,7 +8,7 @@
 
 clear
 
-if ! ( [[ "$(uname -v)" =~ .*Raspbian.* ]] && [[ "$(uname -m)" =~ armv.* ]] ); then
+if ! ( grep "Raspberry Pi" /proc/cpuinfo &>/dev/null && [[ "$(uname -m)" =~ armv.* ]] ); then
 	echo "Error: this script should be run on a Raspberry Pi running 32-bit Debian Bookworm"
 	exit 1
 fi
